@@ -75,18 +75,21 @@ async function downloadVideo() {
         document.body.appendChild(a);
         a.click();
         
-        // クリーンアップ
-        window.URL.revokeObjectURL(blobUrl);
-        document.body.removeChild(a);
+        // クリーンアップ（ダウンロードが開始されるまで少し待つ）
+        setTimeout(() => {
+            window.URL.revokeObjectURL(blobUrl);
+            document.body.removeChild(a);
+        }, 100);
 
         showStatus('ダウンロードが開始されました！', 'success');
         
     } catch (error) {
         console.error('ダウンロードエラー:', error);
         
-        // CORS エラーの場合の代替方法
-        if (error.message.includes('CORS') || error.name === 'TypeError') {
-            showStatus('CORSエラーが発生しました。代替方法を使用します...', 'info');
+        // ネットワークエラーやCORSエラーの場合の代替方法
+        // fetch失敗時は通常TypeErrorが発生するため、代替方法を試みる
+        if (error.name === 'TypeError') {
+            showStatus('直接ダウンロードできませんでした。代替方法を使用します...', 'info');
             
             // 代替方法：直接リンクを開く
             const a = document.createElement('a');
