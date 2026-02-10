@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>動画ダウンローダー</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎥 動画ダウンローダー</h1>
+            <p class="subtitle">動画のURLを入力してダウンロード</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <label for="videoUrl">動画URL:</label>
+                <input 
+                    type="text" 
+                    id="videoUrl" 
+                    placeholder="https://cdn.videy.co/o4UO4CHD1.mp4"
+                    autocomplete="off"
+                >
+                <button id="downloadBtn" onclick="downloadVideo()">ダウンロード</button>
+            </div>
+
+            <div id="statusMessage" class="status-message"></div>
+
+            <div class="info-section">
+                <h2>使い方</h2>
+                <ol>
+                    <li>動画のURLを上記の入力欄に貼り付けます</li>
+                    <li>「ダウンロード」ボタンをクリックします</li>
+                    <li>動画のダウンロードが開始されます</li>
+                </ol>
+
+                <h3>対応形式</h3>
+                <ul>
+                    <li>MP4形式の動画URL</li>
+                    <li>直接リンクの動画ファイル</li>
+                    <li>例: https://cdn.videy.co/o4UO4CHD1.mp4</li>
+                </ul>
+
+                <div class="note">
+                    <strong>注意:</strong> 著作権で保護されたコンテンツのダウンロードは違法です。
+                    自分が権利を持つ動画、または許可された動画のみダウンロードしてください。
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>動画ダウンローダー &copy; 2026</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
