@@ -75,7 +75,8 @@ async function downloadVideo() {
         document.body.appendChild(a);
         a.click();
         
-        // クリーンアップ（ダウンロードが開始されるまで少し待つ）
+        // クリーンアップ（ブラウザがダウンロードを開始するまで少し待つ）
+        // 即座にrevokeするとブラウザによってはダウンロードが中断される可能性がある
         setTimeout(() => {
             window.URL.revokeObjectURL(blobUrl);
             document.body.removeChild(a);
